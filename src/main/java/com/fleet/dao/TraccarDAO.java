@@ -11,18 +11,8 @@ import java.util.List;
 public class TraccarDAO {
 
     
-    private String jdbcURL      = "jdbc:mysql://localhost:3306/traccar";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "shubham@1234";
-
-    protected Connection getConnection() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-        } catch (Exception e) { 
-            e.printStackTrace(); 
-            return null; 
-        }
+    protected Connection getConnection() throws Exception {
+        return DBConnection.getConnection();
     }
 
     public List<TraccarPosition> getLatestPositions() {

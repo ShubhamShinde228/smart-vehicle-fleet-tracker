@@ -8,18 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MaintenanceDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/fleet_db";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "shubham@1234";
-
-    protected Connection getConnection() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
+    protected Connection getConnection() throws SQLException {
+        return DBConnection.getConnection();
     }
 
     public List<MaintenanceNotification> getNotifications(String statusFilter, String vehicleFilter) {

@@ -11,19 +11,8 @@ import java.util.List;
 
 public class VehicleAssignmentDAO {
 
-    private String jdbcURL      = "jdbc:mysql://localhost:3306/fleet_db";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "shubham@1234";
-
-    protected Connection getConnection() {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return connection;
+    protected Connection getConnection() throws SQLException {
+        return DBConnection.getConnection();
     }
 
     // ── Helper: map full JOIN row → VehicleAssignment ────────────────────────
